@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\ProjectController;
+
+use App\Http\Controllers\ProjectApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::apiResource('/projects', ProjectControllerApi::class)->only(['index', 'show']);
+Route::apiResource('/projects', ProjectApi::class)->only(['index', 'show']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
