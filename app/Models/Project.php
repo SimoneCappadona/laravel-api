@@ -8,25 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    
+    protected $fillable = [
+        'title',
+        'image_url',
+        'type_id',
+        'description',
+        'slug'
+    ];
 
-    public function getAbstract($n_chars = 30)
-    {
-        
-    }
     public function type()
     {
-       
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Type::class);
     }
 
     public function technologies()
     {
-        
+        return $this->belongsToMany(Technology::class);
+    }
 
+    public function getAbstract($n_chars = 30)
+    {
+        return (strlen($this->content) > $n_chars) ? subst($this->content, 0, $n_chars) . '...' : $this->content;
     }
 }
