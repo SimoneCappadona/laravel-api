@@ -113,3 +113,4 @@ class ProjectController extends Controller
         return redirect()->route('admin.projects.index')->with('message', 'Progetto eliminato con successo');
     }
 }
+
